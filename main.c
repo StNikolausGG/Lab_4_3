@@ -4,8 +4,21 @@
 
 int main()
 {
-    char W1[1000] = "dxdwd";
-    char W2[1000] = "xwddd";
+    //Проверка условия длины
+    //char W1[1000] = "123";
+    //char W2[1000] = "3214";
+    //Вывод: Words are not anagram!
+
+    //Проверка подходящих слов
+    //char W1[1000] = "dxdwd";
+    //char W2[1000] = "xwddd";
+    //Вывод: Words are anagram!
+
+    //Проверка при W1 и W2 = "";
+    char W1[1000] = "";
+    char W2[1000] = "";
+    //Вывод: Words are anagram!
+
     char *ptrStr = W1;
     bool flag = true;
 
