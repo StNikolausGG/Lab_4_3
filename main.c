@@ -2,57 +2,56 @@
 #include <string.h>
 #include <stdbool.h>
 
-int main()
+bool anagram_check(char *Word1, char *Word2)
 {
-    //Проверка условия длины
-    //char W1[1000] = "123";
-    //char W2[1000] = "3214";
-    //Вывод: Words are not anagram!
+    char *ptrStr = Word1;
+    int Tab[256] = {0};
 
-    //Проверка подходящих слов
-    //char W1[1000] = "dxdwd";
-    //char W2[1000] = "xwddd";
-    //Вывод: Words are anagram!
-
-    //Проверка при W1 и W2 = "";
-    char W1[1000] = "";
-    char W2[1000] = "";
-    //Вывод: Words are anagram!
-
-    char *ptrStr = W1;
-    bool flag = true;
-
-    int Tab1[256] = {0};
-    int Tab2[256] = {0};
-
-    if (strlen(W1) == strlen(W2))
+    if (strlen(Word1) == strlen(Word2))
     {
         while (*ptrStr)
         {
-            Tab1[*ptrStr]++;
+            Tab[*ptrStr]++;
             ptrStr++;
         }
 
-        ptrStr = W2;
+        ptrStr = Word2;
         while (*ptrStr)
         {
-            Tab2[*ptrStr]++;
+            Tab[*ptrStr]--;
             ptrStr++;
         }
 
         for (int i = 0; i < 256; i++)
         {
-            if (Tab1[i] != Tab2[i])
+            if (Tab[i] != 0)
             {
-                flag = false;
+                return false;
             }
         }
+        return true;
     }
+    return false;
+}
 
-    else
-    {
-        flag = false;
-    }
+int main()
+{
+    //Проверка условия длины
+//    char W1[1000] = "123";
+//    char W2[1000] = "3214";
+    //Вывод: Words are not anagram!
+
+    //Проверка подходящих слов
+//    char W1[1000] = "dxdwd";
+//    char W2[1000] = "xwddd";
+    //Вывод: Words are anagram!
+
+//    //Проверка при W1 и W2 = "";
+    char W1[1000] = "";
+    char W2[1000] = "";
+//   Вывод: Words are anagram!
+
+    bool flag = anagram_check(W1, W2);
 
     if (flag)
     {
