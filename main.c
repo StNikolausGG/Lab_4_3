@@ -13,14 +13,14 @@ int anagram_check(char *Word1, char *Word2)
 
             while (*ptrStr)
             {
-                Tab[*ptrStr]++;
+                Tab[(unsigned char)*ptrStr]++;
                 ptrStr++;
             }
 
             ptrStr = Word2;
             while (*ptrStr)
             {
-                Tab[*ptrStr]--;
+                Tab[(unsigned char)*ptrStr]--;
                 ptrStr++;
             }
 
@@ -45,8 +45,8 @@ int anagram_check(char *Word1, char *Word2)
 int main()
 {
     //Базовая проверка подходящих слов
-//    char W1[1000] = "12345";
-//    char W2[1000] = "51423";
+    char W1[1000] = "12345";
+    char W2[1000] = "51423";
     //Вывод: Words are anagram!
 
     //Базовая проверка подходящих слов с повторяющимися символами
@@ -65,18 +65,18 @@ int main()
 //   Вывод: Words are anagram!
 
     //Проверка нулевых адресов
-//    char *ptr1 = Null;
-//    char *ptr2 = Null;
+//    char *W1 = NULL;
+//    char *W2 = NULL;
     //Вывод: Received null address!
 
     //Проверка нулевого адреса
 //    char W1[1000] = "123";
-//    char *ptr2 = Null;
+//    char *W2 = NULL;
     //Вывод: Received null address!
 
     //Ошибка кириллицы
-    char W1[1000] = "о";
-    char W2[1000] = "я";
+//    char W1[1000] = "о";
+//    char W2[1000] = "я";
     //Вывод: Words are anagram!
 
     int flag = anagram_check(W1, W2);
