@@ -12,7 +12,7 @@ int string_compress(char *Word1, char *Word2)
 
         while(*ptrStr)
         {
-            Tab[*ptrStr] = true;
+            Tab[(unsigned char)*ptrStr] = true;
             flag = true;
             ptrStr++;
         }
@@ -24,7 +24,7 @@ int string_compress(char *Word1, char *Word2)
 
         while (*ptrStr)
         {
-            if (!Tab[*ptrStr])
+            if (!Tab[(unsigned char)*ptrStr])
             {
                 *newStr = *ptrStr;
                 newStr++;
@@ -41,9 +41,40 @@ int string_compress(char *Word1, char *Word2)
 
 int main()
 {
-    char S1[1000] = "aabbcdhgkl";
+    //Проверка базового функционала
+    char S1[1000] = "acdhgkb";
     char S2[1000] = "abd";
-    char *test = NULL;
+    //Вывод: Compressed S1: chgk
+
+    //Передача нулевого адреса
+    //char S1[1000] = "test";
+    //char *S2 = NULL;
+    //Вывод: Received null address!
+
+    //Пустая строка фильтра S2
+    //char S1[1000] = "hello";
+    //char S2[1000] = "";
+    //Вывод: S2 is empty, no compression. S1: hello
+
+    //Полное удаление всех символов
+    //char S1[1000] = "abc";
+    //char S2[1000] = "abc";
+    //Вывод: Compressed S1:
+
+    //Нет совпадений
+    //char S1[1000] = "xyz";
+    //char S2[1000] = "abc";
+    //Вывод: Compressed S1: xyz
+
+    //Кириллица
+//    char S1[1000] = "йок";
+//    char S2[1000] = "кой";
+    //Вывод: Compressed S1:
+
+    //Кириллица + латиница
+//    char S1[1000] = "abcйокef";
+//    char S2[1000] = "aкойe";
+    //Вывод: Compressed S1:
 
     printf("Uncompressed S1: %s\n", S1);
     printf("S2: %s\n", S2);
@@ -60,7 +91,7 @@ int main()
     }
     else
     {
-        printf("One of arguments contains null address\n");
+        printf("Received null address!\n");
     }
 
     return 0;
