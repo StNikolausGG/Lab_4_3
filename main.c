@@ -3,7 +3,7 @@
 
 int ddfind(char *str, int *mas)
 {
-    if (str && mas)
+    if (str)
     {
         char *ptrStr = str;
         char *startStr = str;
@@ -42,20 +42,31 @@ int ddfind(char *str, int *mas)
 
 int main()
 {
-    char S[1000] = "hello,broddther,dd,  ,is,dgood.";
+    char S[1000] = "Hello,worldd!,hello worldd.";
+    //char S[1000] = "dont , drozd, triddd.";
+//    char S[1000] = "cyr test and special symb: @@абдзфщалdфлоп.";
+//    char *S = NULL;
     int mas[1000] = {-1};
+    printf("Initial str: %s\n", S);
     int rez = ddfind(S, mas);
-    int i = 0;
-    while (mas[i] != 0)
+    if (!rez)
     {
-        for (int k = mas[i]; k < mas[i] + mas[i+1]; k++)
+        printf("Words with double d: ");
+        int i = 0;
+        while (mas[i] != 0 || mas[i+1] != 0)
         {
-            printf("%c", S[k]);
+            for (int k = mas[i]; k < mas[i] + mas[i+1]; k++)
+            {
+                printf("%c", S[k]);
+            }
+            printf(" ");
+            i += 2;
         }
-        printf(" ");
-        i += 2;
     }
-
+    else
+    {
+        printf("Recieved null address!");
+    }
 
     return 0;
 }
