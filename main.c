@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdbool.h>
 
-int ddfind(char *str, int *mas)
+int ddfind(char *str, int *mas, int len)
 {
     if (str)
     {
         char *ptrStr = str;
         char *startStr = str;
         int cnt = 0;
+        int para = 0;
         int ind = 0;
         int *index = &ind;
         bool flag = true;
@@ -21,12 +22,13 @@ int ddfind(char *str, int *mas)
             if (*ptrStr == ',' || *ptrStr == '.')
             {
                 int length = ptrStr - startStr;
-                if (cnt == 2)
+                if (cnt == 2 && 2 + para * 2 <= len)
                 {
                     *mas = *index;
                     mas++;
                     *mas = length;
                     mas++;
+                    para++;
                 }
                 startStr = ptrStr + 1;
                 *index += length + 1;
@@ -55,9 +57,10 @@ int main()
 //    char S[1000] = "cyr test and special symb: @@абдзфщалdфлоп.";
 //    char *S = NULL;
     //char S[1000] = "hello, sir! I have not roots.";
-    int mas[1000] = {-1};
+    int mas[4] = {-1};
+    int len = sizeof (mas)/sizeof (mas[0]);
     printf("Initial str: %s\n", S);
-    int rez = ddfind(S, mas);
+    int rez = ddfind(S, mas, len);
     if (!rez)
     {
         printf("Words with double d: ");
