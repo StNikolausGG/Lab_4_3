@@ -54,6 +54,7 @@ int main()
     //char S[1000] = "dont , drozd, triddd.";
 //    char S[1000] = "cyr test and special symb: @@абдзфщалdфлоп.";
 //    char *S = NULL;
+    //char S[1000] = "hello, sir! I have not roots.";
     int mas[1000] = {-1};
     printf("Initial str: %s\n", S);
     int rez = ddfind(S, mas);
