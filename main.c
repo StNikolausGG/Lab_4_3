@@ -35,6 +35,14 @@ int ddfind(char *str, int *mas)
             }
             ptrStr++;
         }
+        if (cnt == 2)
+        {
+            int length = ptrStr - startStr;
+            *mas = *index;
+            mas++;
+            *mas = length;
+            mas++;
+        }
         return 0;
     }
     return 1;
@@ -65,7 +73,7 @@ int main()
     }
     else
     {
-        printf("Recieved null address!");
+        printf("Received null address!");
     }
 
     return 0;
