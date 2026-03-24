@@ -10,7 +10,6 @@ int ddfind(char *str, int *mas, int len)
         int cnt = 0;
         int para = 0;
         int ind = 0;
-        int *index = &ind;
         bool flag = true;
 
         while (*ptrStr && flag)
@@ -19,19 +18,19 @@ int ddfind(char *str, int *mas, int len)
             {
                 cnt++;
             }
-            if (*ptrStr == ',' || *ptrStr == '.')
+            if (*ptrStr == ',' || *ptrStr == '.' || *ptrStr == ' ')
             {
                 int length = ptrStr - startStr;
                 if (cnt == 2 && 2 + para * 2 <= len)
                 {
-                    *mas = *index;
+                    *mas = ind;
                     mas++;
                     *mas = length;
                     mas++;
                     para++;
                 }
                 startStr = ptrStr + 1;
-                *index += length + 1;
+                ind += length + 1;
                 cnt = 0;
                 if (*ptrStr == '.') flag = false;
             }
@@ -40,7 +39,7 @@ int ddfind(char *str, int *mas, int len)
         if (cnt == 2)
         {
             int length = ptrStr - startStr;
-            *mas = *index;
+            *mas = ind;
             mas++;
             *mas = length;
             mas++;
@@ -52,14 +51,13 @@ int ddfind(char *str, int *mas, int len)
 
 int main()
 {
-//    char S[1000] = "Hello,worldd!,hello worldd.";
-    //char S[1000] = "dont , drozd, triddd.";
-//    char S[1000] = "cyr test and special symb: @@абдзфщалdфлоп.";
+    char S[1000] = "Hello,worldd!,hello worldd.";
+    //char S[1000] = "dont,drozd,triddd.";
 //    char *S = NULL;
-    //char S[1000] = "hello, sir! I have not roots.";
-    //char S[1000] = "hi, hello and world";
-    char S[1000] = "dausdygf. dddaaa";
-    int mas[1000] = {-1};
+    //char S[1000] = "hello,sir!Ihavenoroots.";
+    //char S[1000] = "hi,helloandworld";
+//    char S[1000] = "dausdygf.ddaaa";
+    int mas[1000] = {0};
     int len = sizeof (mas)/sizeof (mas[0]);
     printf("Initial str: %s\n", S);
     int rez = ddfind(S, mas, len);
