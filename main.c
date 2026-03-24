@@ -52,12 +52,14 @@ int ddfind(char *str, int *mas, int len)
 
 int main()
 {
-    char S[1000] = "Hello,worldd!,hello worldd.";
+//    char S[1000] = "Hello,worldd!,hello worldd.";
     //char S[1000] = "dont , drozd, triddd.";
 //    char S[1000] = "cyr test and special symb: @@абдзфщалdфлоп.";
 //    char *S = NULL;
     //char S[1000] = "hello, sir! I have not roots.";
-    int mas[4] = {-1};
+    //char S[1000] = "hi, hello and world";
+    char S[1000] = "dausdygf. dddaaa";
+    int mas[1000] = {-1};
     int len = sizeof (mas)/sizeof (mas[0]);
     printf("Initial str: %s\n", S);
     int rez = ddfind(S, mas, len);
